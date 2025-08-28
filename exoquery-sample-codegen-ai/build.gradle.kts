@@ -67,6 +67,7 @@ exoQuery {
   codegenDrivers.add("org.postgresql:postgresql:42.7.3")
   // If we are only rebuilding the entities, then always force regeneration
   forceRegen = onlyRegenEntities().get()
+  enableCodegenAI = true
 }
 
 application {
