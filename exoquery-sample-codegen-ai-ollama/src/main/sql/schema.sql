@@ -27,27 +27,12 @@ created_on DATE NOT NULL,
 is_active BOOLEAN NOT NULL
 );
 
-
-
-
-
-
-
-CREATE TABLE org_AccountMembers (
-orgmember_id SERIAL PRIMARY KEY,
-"orgId" INTEGER NOT NULL REFERENCES "Organization_Accounts"("orgId") ON DELETE CASCADE,
+CREATE TABLE org_accountmembers (
+org_member_id SERIAL PRIMARY KEY,
+org_id INTEGER NOT NULL REFERENCES "Organization_Accounts"("orgId") ON DELETE CASCADE,
 user_id INTEGER NOT NULL REFERENCES "UserProfiles"("userId") ON DELETE CASCADE,
-rolename VARCHAR(60) NOT NULL
+role_name VARCHAR(60) NOT NULL
 );
-
-
-
-
-
-
-
-
-
 
 -- Users
 INSERT INTO "UserProfiles" ("userId", "firstName", last_name, "emailAddress", "isActive", updated_at) VALUES
@@ -62,7 +47,7 @@ INSERT INTO "Organization_Accounts" ("orgId", org_name, legal_name, created_on, 
   (12, 'Gamma Corp', 'Gamma Corporation', DATE '2022-11-20', false);
 
 -- Organization members (roles within orgs)
-INSERT INTO org_AccountMembers (orgmember_id, "orgId", user_id, rolename)VALUES
+INSERT INTO org_accountmembers (org_member_id, org_id, user_id, role_name) VALUES
   (2001, 10, 1, 'admin'),
   (2002, 10, 2, 'member'),
   (2003, 11, 2, 'admin'),

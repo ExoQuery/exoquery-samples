@@ -23,14 +23,30 @@ import io.exoquery.generation.DatabaseDriver
  * command to only compile the file with the code-generation call. See the modified compileKotlin task
  * in the build.gradle.kts file for more information.
  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 fun generate() {
   capture.generate(
     Code.Entities(
       CodeVersion.Fixed("1.0.0"),
       DatabaseDriver.Postgres("jdbc:postgresql://localhost:26432/postgres"),
       "io.exoquery.example",
-      // Since the database-schema is snake_case, we use the SnakeCase parser to convert the table
-      // and column names to camelCase when they are generated.
       nameParser = NameParser.UsingLLM(LLM.OpenAI())
     )
   )

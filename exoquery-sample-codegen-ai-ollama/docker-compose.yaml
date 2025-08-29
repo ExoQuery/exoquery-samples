@@ -1,0 +1,11 @@
+services:
+  db:
+    container_name: exoquery-sample-codegen-postgres-ai
+    image: postgres:9.6
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 26432:5432
+    volumes:
+      - ./src/main/sql:/docker-entrypoint-initdb.d/:ro
