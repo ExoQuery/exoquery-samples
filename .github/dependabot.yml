@@ -7,14 +7,11 @@ updates:
     rebase-strategy: auto
     open-pull-requests-limit: 5
     groups:
-      kotlin:
-        patterns: ["org.jetbrains.kotlin:*", "kotlin*", "jvm", "plugin.serialization"]
-      exoquery:
-        patterns: ["io.exoquery:*", "io.exoquery.exoquery-plugin"]
-      postgres:
-        patterns: ["org.postgresql:postgresql", "io.zonky.test:*", "io.zonky.test.postgres:*"]
-      misc:
-        patterns: ["*"]
+      kotlin-and-exoquery:
+        patterns:
+          - "org.jetbrains.kotlin:*"          # Kotlin stdlib, reflect, gradle plugin, including kotlin-serialization plugin
+          - "org.jetbrains.kotlinx:kotlinx-serialization-*"  # kotlinx serialization libraries
+          - "io.exoquery:*"
   - package-ecosystem: gradle
     directory: "/exoquery-sample-codegen-ai"
     schedule:
@@ -22,14 +19,11 @@ updates:
     rebase-strategy: auto
     open-pull-requests-limit: 5
     groups:
-      kotlin:
-        patterns: ["org.jetbrains.kotlin:*", "kotlin*", "jvm", "plugin.serialization"]
-      exoquery:
-        patterns: ["io.exoquery:*", "io.exoquery.exoquery-plugin"]
-      postgres:
-        patterns: ["org.postgresql:postgresql", "io.zonky.test:*", "io.zonky.test.postgres:*"]
-      misc:
-        patterns: ["*"]
+      kotlin-and-exoquery:
+        patterns:
+          - "org.jetbrains.kotlin:*"          # Kotlin stdlib, reflect, gradle plugin, including kotlin-serialization plugin
+          - "org.jetbrains.kotlinx:kotlinx-serialization-*"  # kotlinx serialization libraries
+          - "io.exoquery:*"
   - package-ecosystem: gradle
     directory: "/exoquery-sample-codegen-ai-ollama"
     schedule:
@@ -37,11 +31,8 @@ updates:
     rebase-strategy: auto
     open-pull-requests-limit: 5
     groups:
-      kotlin:
-        patterns: ["org.jetbrains.kotlin:*", "kotlin*", "jvm", "plugin.serialization"]
-      exoquery:
-        patterns: ["io.exoquery:*", "io.exoquery.exoquery-plugin"]
-      postgres:
-        patterns: ["org.postgresql:postgresql", "io.zonky.test:*", "io.zonky.test.postgres:*"]
-      misc:
-        patterns: ["*"]
+      kotlin-and-exoquery:
+        patterns:
+          - "org.jetbrains.kotlin:*"          # Kotlin stdlib, reflect, gradle plugin, including kotlin-serialization plugin
+          - "org.jetbrains.kotlinx:kotlinx-serialization-*"  # kotlinx serialization libraries
+          - "io.exoquery:*"
