@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: gradle
+    directory: "/exoquery-sample-codegen"
+    schedule:
+      interval: weekly
+  - package-ecosystem: gradle
+    directory: "/exoquery-sample-codegen-ai"
+    schedule:
+      interval: weekly
+  - package-ecosystem: gradle
+    directory: "/exoquery-sample-codegen-ai-ollama"
+    schedule:
+      interval: weekly
