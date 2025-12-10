@@ -23,10 +23,10 @@ kotlin {
 
 dependencies {
   api("io.exoquery:exoquery-runner-jdbc:2.0.0.PL")
-  implementation("org.postgresql:postgresql:42.7.0")
+  implementation("org.postgresql:postgresql:42.7.8")
 
-  implementation("io.zonky.test:embedded-postgres:2.0.7")
-  implementation("io.zonky.test.postgres:embedded-postgres-binaries-linux-amd64:16.2.0")
+  implementation("io.zonky.test:embedded-postgres:2.2.0")
+  implementation("io.zonky.test.postgres:embedded-postgres-binaries-linux-amd64:18.1.0")
 
   // OPTIONAL: Just for testing
   testImplementation(kotlin("test"))
@@ -64,7 +64,7 @@ tasks.named<KotlinCompile>("compileKotlin") {
 }
 
 exoQuery {
-  codegenDrivers.add("org.postgresql:postgresql:42.7.3")
+  codegenDrivers.add("org.postgresql:postgresql:42.7.8")
   // If we are only rebuilding the entities, then always force regeneration
   forceRegen = onlyRegenEntities().get()
   enableCodegenAI = true
