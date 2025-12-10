@@ -26,7 +26,7 @@ dependencies {
   implementation("org.postgresql:postgresql:42.7.0")
 
   implementation("io.zonky.test:embedded-postgres:2.0.7")
-  implementation("io.zonky.test.postgres:embedded-postgres-binaries-linux-amd64:16.2.0")
+  implementation("io.zonky.test.postgres:embedded-postgres-binaries-linux-amd64:18.1.0")
 
   // OPTIONAL: Just for testing
   testImplementation(kotlin("test"))
