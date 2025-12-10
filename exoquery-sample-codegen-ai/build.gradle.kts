@@ -25,7 +25,7 @@ dependencies {
   api("io.exoquery:exoquery-runner-jdbc:1.5.1.PL")
   implementation("org.postgresql:postgresql:42.7.0")
 
-  implementation("io.zonky.test:embedded-postgres:2.0.7")
+  implementation("io.zonky.test:embedded-postgres:2.2.0")
   implementation("io.zonky.test.postgres:embedded-postgres-binaries-linux-amd64:16.2.0")
 
   // OPTIONAL: Just for testing
