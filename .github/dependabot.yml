@@ -4,11 +4,44 @@ updates:
     directory: "/exoquery-sample-codegen"
     schedule:
       interval: weekly
+    rebase-strategy: auto
+    open-pull-requests-limit: 5
+    groups:
+      kotlin:
+        patterns: ["org.jetbrains.kotlin:*", "kotlin*", "jvm", "plugin.serialization"]
+      exoquery:
+        patterns: ["io.exoquery:*", "io.exoquery.exoquery-plugin"]
+      postgres:
+        patterns: ["org.postgresql:postgresql", "io.zonky.test:*", "io.zonky.test.postgres:*"]
+      misc:
+        patterns: ["*"]
   - package-ecosystem: gradle
     directory: "/exoquery-sample-codegen-ai"
     schedule:
       interval: weekly
+    rebase-strategy: auto
+    open-pull-requests-limit: 5
+    groups:
+      kotlin:
+        patterns: ["org.jetbrains.kotlin:*", "kotlin*", "jvm", "plugin.serialization"]
+      exoquery:
+        patterns: ["io.exoquery:*", "io.exoquery.exoquery-plugin"]
+      postgres:
+        patterns: ["org.postgresql:postgresql", "io.zonky.test:*", "io.zonky.test.postgres:*"]
+      misc:
+        patterns: ["*"]
   - package-ecosystem: gradle
     directory: "/exoquery-sample-codegen-ai-ollama"
     schedule:
       interval: weekly
+    rebase-strategy: auto
+    open-pull-requests-limit: 5
+    groups:
+      kotlin:
+        patterns: ["org.jetbrains.kotlin:*", "kotlin*", "jvm", "plugin.serialization"]
+      exoquery:
+        patterns: ["io.exoquery:*", "io.exoquery.exoquery-plugin"]
+      postgres:
+        patterns: ["org.postgresql:postgresql", "io.zonky.test:*", "io.zonky.test.postgres:*"]
+      misc:
+        patterns: ["*"]
