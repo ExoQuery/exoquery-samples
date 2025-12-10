@@ -1,0 +1,57 @@
+version: "3.9"
+
+# Google Cloud Spanner Emulator + one-shot init that creates an instance, a
+# PostgreSQL-dialect database, and applies the sample schema/seed.
+
+services:
+  spanner-emulator:
+    image: gcr.io/cloud-spanner-emulator/emulator:latest
+    container_name: spanner-emulator
+    environment:
+      # Bind emulator on all interfaces, default port 9010 (gRPC)
+      - SPANNER_EMULATOR_HOST=0.0.0.0:9010
+    ports:
+      - "9010:9010"
+
+  spanner-init:
+    image: google/cloud-sdk:slim
+    container_name: spanner-init
+    depends_on:
+      - spanner-emulator
+    environment:
+      # You can override these with environment variables when running compose
+      - SPANNER_PROJECT=${SPANNER_PROJECT:-demo-project}
+      - SPANNER_INSTANCE=${SPANNER_INSTANCE:-demo-instance}
+      - SPANNER_DATABASE=${SPANNER_DATABASE:-demo-db}
+      # Point gcloud to the emulator via service hostname
+      - SPANNER_EMULATOR_HOST=spanner-emulator:9010
+      - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+    volumes:
+      - ./schema.spanner.pg.sql:/schema/schema.spanner.pg.sql:ro
+    # Creates the instance and PostgreSQL-dialect database, then applies DDL file.
+    command: >-
+      bash -lc '
+        set -euo pipefail;
+        echo "[spanner-init] Waiting for emulator port spanner-emulator:9010...";
+        for i in $(seq 1 60); do
+          if bash -lc "</dev/tcp/spanner-emulator/9010" >/dev/null 2>&1; then
+            echo "[spanner-init] Emulator is reachable."; break; fi; sleep 1; done;
+        echo "[spanner-init] Using project=$SPANNER_PROJECT instance=$SPANNER_INSTANCE database=$SPANNER_DATABASE";
+        gcloud config set project "$SPANNER_PROJECT" >/dev/null;
+        # The presence of SPANNER_EMULATOR_HOST makes gcloud talk to the emulator.
+        echo "[spanner-init] Creating instance (if not exists)...";
+        gcloud spanner instances create "$SPANNER_INSTANCE" \
+          --config=emulator-config --description="Local emulator instance" --nodes=1 \
+          || echo "[spanner-init] Instance already exists";
+        echo "[spanner-init] Creating PostgreSQL-dialect database (if not exists)...";
+        gcloud spanner databases create "$SPANNER_DATABASE" \
+          --instance="$SPANNER_INSTANCE" --database-dialect=POSTGRESQL \
+          || echo "[spanner-init] Database already exists";
+        echo "[spanner-init] Applying schema/seed DDL...";
+        gcloud spanner databases ddl update "$SPANNER_DATABASE" \
+          --instance="$SPANNER_INSTANCE" --ddl-file=/schema/schema.spanner.pg.sql;
+        echo "[spanner-init] Done.";
+      '
+
+    # Run once and exit
+    restart: "no"

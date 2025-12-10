@@ -8,3 +8,4 @@ rootProject.name = "exoquery-samples"
 includeBuild("exoquery-sample-codegen")
 includeBuild("exoquery-sample-codegen-ai")
 includeBuild("exoquery-sample-codegen-ai-ollama")
+includeBuild("exoquery-sample-spanner")
