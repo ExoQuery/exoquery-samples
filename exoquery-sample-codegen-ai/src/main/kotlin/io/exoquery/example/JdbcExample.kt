@@ -1,12 +1,12 @@
 package io.exoquery.example
 
-import io.exoquery.capture
 import io.exoquery.controller.jdbc.JdbcControllers
 import io.exoquery.controller.jdbc.fromConfig
 import io.exoquery.example.public.OrgAccountMembers
 import io.exoquery.example.public.OrganizationAccounts
 import io.exoquery.example.public.UserProfiles
 import io.exoquery.jdbc.runOn
+import io.exoquery.sql
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.Serializable
 
@@ -18,7 +18,7 @@ data class UserInfo(val firstName: String, val lastName: String, val role: Strin
 
 
 
-val query = capture.select {
+val query = sql.select {
   val org = from(Table<OrganizationAccounts>())
   val member = join(Table<OrgAccountMembers>()) { it.orgId == org.orgId }
   val user = join(Table<UserProfiles>()) { it.userId == member.userId }

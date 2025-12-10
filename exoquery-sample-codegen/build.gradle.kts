@@ -1,15 +1,14 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  kotlin("jvm") version "2.2.21" // Currently the plugin is only available for Kotlin-JVM
-  id("io.exoquery.exoquery-plugin") version "2.2.0-2.0.0.PL"
-  kotlin("plugin.serialization") version "2.2.21"
+  kotlin("jvm") version "2.2.20" // Currently the plugin is only available for Kotlin-JVM
+  id("io.exoquery.exoquery-plugin") version "2.2.20-2.0.0.PL"
+  kotlin("plugin.serialization") version "2.2.20"
   id("application")
 }
 
 repositories {
     mavenCentral()
-    mavenLocal()
 }
 
 java {
@@ -45,7 +44,7 @@ tasks.withType<Test>().configureEach {
 
 fun onlyRegenEntities() =
   providers.gradleProperty("onlyRegenEntities")
-    .map { if (it.isBlank()) true else it.toBoolean() }
+    .map { if (it.isBlank()) false else it.toBoolean() }
     .orElse(false)
 
 // Use the commaond `./gradlew clean compileKotlin -PonlyRegenEntities=true` if you need

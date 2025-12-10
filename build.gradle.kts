@@ -1,8 +1,8 @@
-// Minimal top-level Gradle build script to help manage all sample projects.
-// It provides aggregate tasks (cleanAll, buildAll, testAll) that delegate to
-// each sample's own Gradle wrapper inside its directory.
-
 import org.gradle.api.tasks.Exec
+
+plugins {
+    kotlin("jvm") version "2.2.20" apply false
+}
 
 // List of sample project directories (relative to this file)
 val samples = listOf(

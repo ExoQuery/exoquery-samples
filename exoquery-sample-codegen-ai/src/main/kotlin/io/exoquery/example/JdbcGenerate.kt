@@ -1,11 +1,11 @@
 package io.exoquery.example
 
-import io.exoquery.capture
 import io.exoquery.codegen.model.LLM
 import io.exoquery.codegen.model.NameParser
 import io.exoquery.generation.Code
 import io.exoquery.generation.CodeVersion
 import io.exoquery.generation.DatabaseDriver
+import io.exoquery.sql
 
 /**
  * Invoke the ExoQuery entity-generator!
@@ -42,7 +42,7 @@ import io.exoquery.generation.DatabaseDriver
 
 
 fun generate() {
-  capture.generate(
+  sql.generate(
     Code.Entities(
       CodeVersion.Fixed("1.0.0"),
       DatabaseDriver.Postgres("jdbc:postgresql://localhost:26432/postgres"),
