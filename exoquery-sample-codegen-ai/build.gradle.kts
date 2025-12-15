@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
   kotlin("jvm") version "2.2.21" // Currently the plugin is only available for Kotlin-JVM
-  id("io.exoquery.exoquery-plugin") version "2.2.0-2.0.0.PL"
+  id("io.exoquery.exoquery-plugin") version "2.2.0-2.0.1.PL"
   kotlin("plugin.serialization") version "2.2.21"
   id("application")
 }
@@ -22,7 +22,7 @@ kotlin {
 }
 
 dependencies {
-  api("io.exoquery:exoquery-runner-jdbc:2.0.0.PL")
+  api("io.exoquery:exoquery-runner-jdbc:2.0.1.PL")
   implementation("org.postgresql:postgresql:42.7.8")
 
   implementation("io.zonky.test:embedded-postgres:2.2.0")
