@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  kotlin("jvm") version "2.2.21" // Currently the plugin is only available for Kotlin-JVM
+  kotlin("jvm") version "2.3.0" // Currently the plugin is only available for Kotlin-JVM
   id("io.exoquery.exoquery-plugin") version "2.2.0-2.0.0.PL"
   kotlin("plugin.serialization") version "2.2.21"
   id("application")
